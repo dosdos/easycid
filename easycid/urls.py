@@ -14,8 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.conf.urls import include, url
+from django.conf.urls import include
+from django.conf.urls import url
 from django.contrib import admin
+
+from cid.urls import router
+from cid.views import api_docs
 
 
 admin.site.site_header = settings.ADMIN_SITE_HEADER
@@ -23,4 +27,6 @@ admin.site.site_header = settings.ADMIN_SITE_HEADER
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^vehicles/', include('cid.urls')),
+    url(r'^api/', include(router.urls)),
+    url(r'^api/docs/', api_docs),
 ]

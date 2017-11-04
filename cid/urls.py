@@ -1,9 +1,12 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+from rest_framework import routers
 
-from django.conf.urls import url
-
+from cid.views import VehicleViewSet, ProfileViewSet, AccidentViewSet
 
 urlpatterns = [
     # url(r'^test-url$', test_url, name='test_url'),
 ]
+
+router = routers.DefaultRouter()
+router.register(r'vehicles', VehicleViewSet)
+router.register(r'profiles', ProfileViewSet)
+router.register(r'accidents', AccidentViewSet)
