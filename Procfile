@@ -1,0 +1,1 @@
+web: gunicorn easycid.wsgi --log-file -
