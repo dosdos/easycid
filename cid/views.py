@@ -46,9 +46,15 @@ class AciMockViewSet(viewsets.ViewSet):
 
 class AroundMeMockViewSet(viewsets.ViewSet):
     def list(self, request, *args, **kwargs):
-        url = "https://pp.api.helab.nuvolaitaliana.it/si/contacts/v2/locations?companyAteco=52.21.6"
+        url = "https://pp.api.helab.nuvolaitaliana.it/si/contacts/v2/locations?companyAteco=52.21.6&lat=45.45111&lon=9.178333"
         headers = {'Keyid': '4d019814-f574-4d72-9e58-5510c60afc5b'}
-        res = requests.get(url, headers=headers)
+        params = {
+            'companyAteco': '52.21.6',
+            'lat': '45.45111',
+            'lon': '9.178333',
+            'distance': '10000',
+        }
+        res = requests.get(url, params=params, headers=headers)
         if res.status_code == 200:
             return Response(json.loads(res.content), status=status.HTTP_200_OK)
         else:
