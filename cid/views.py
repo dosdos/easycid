@@ -7,6 +7,7 @@ from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.response import Response
 from rest_framework_swagger.renderers import OpenAPIRenderer, SwaggerUIRenderer
 
+from cid.carta_si import primo_pagamento_ssl
 from .serializers import *
 
 
@@ -63,3 +64,9 @@ class AroundMeMockViewSet(viewsets.ViewSet):
             return Response(json.loads(res.content), status=status.HTTP_200_OK)
         else:
             return Response({'error': 'error'}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
+
+
+class CartaSiMockViewSet(viewsets.ViewSet):
+    def list(self, request, *args, **kwargs):
+        status_code, resp = primo_pagamento_ssl()
+        return Response(resp, status=status.HTTP_200_OK)

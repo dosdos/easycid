@@ -1,6 +1,14 @@
 from rest_framework import routers
 
-from cid.views import VehicleViewSet, ProfileViewSet, AccidentViewSet, AniaMockViewSet, AciMockViewSet, AroundMeMockViewSet
+from cid.views import (
+    VehicleViewSet,
+    ProfileViewSet,
+    AccidentViewSet,
+    AniaMockViewSet,
+    AciMockViewSet,
+    AroundMeMockViewSet,
+    CartaSiMockViewSet,
+)
 
 urlpatterns = []
 
@@ -11,3 +19,4 @@ router.register(r'accidents', AccidentViewSet)
 router.register(r'ania_api/(?P<targa>\d+)', AniaMockViewSet, 'ania_api')
 router.register(r'aci_api/(?P<patente>\d+)', AciMockViewSet, 'aci_api')
 router.register(r'trova_carroattrezzi', AroundMeMockViewSet, 'trova_carroattrezzi')
+router.register(r'paga_con_carta_si', CartaSiMockViewSet, 'paga_carta_si')
