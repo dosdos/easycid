@@ -33,13 +33,18 @@ class ProfileSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class AccidentSerializer(serializers.HyperlinkedModelSerializer):
+    vehicle_vA = VehicleSerializer()
+    vehicle_vB = VehicleSerializer()
+
     class Meta:
         model = Accident
         fields = (
             "vehicle_vA",
             "circumstance_vA",
             "damages_vA",
+            "observations_vA",
             "vehicle_vB",
             "circumstance_vB",
             "damages_vB",
+            "observations_vB",
         )
